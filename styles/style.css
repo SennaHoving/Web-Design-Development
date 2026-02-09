@@ -54,9 +54,40 @@ table {
     --color-primary: black;
 
     --font-family: 'Roboto', sans-serif;
+	--font-size-title: 2em;
+}
+
+body {
+	overflow-x: hidden; 
+}
+
+h1, p {
+    color: var(--color-primary);
+    font-family: var(--font-family);
+}
+
+section:nth-of-type(1) {
+	position : absolute;
+	display: grid; 
+	grid-template-rows: 1fr 20% 1fr;
+	height: 100vh; 
+	width: 100%;
+}
+
+section:nth-of-type(1) > div {
+	background-color: white;
+	padding: 1em;
+}
+
+section:nth-of-type(1) > div:nth-of-type(2) {
+	grid-row: 3;
 }
 
 h1 {
-    color: var(--color-primary);
-    font-family: var(--font-family);
+	font-size: var(--font-size-title); 
+}
+
+section:nth-of-type(2) {
+	background-color: rgb(162, 162, 162);
+	height: 200vh; 
 }
