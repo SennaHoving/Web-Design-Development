@@ -1,5 +1,5 @@
-const pannelHeroFirst = document.querySelector('section:nth-of-type(1) > div:first-of-type');
-const pannelHeroLast = document.querySelector('section:nth-of-type(1) > div:last-of-type');
+const panelHeroFirst = document.querySelector('section:nth-of-type(1) > div:first-of-type');
+const panelHeroLast = document.querySelector('section:nth-of-type(1) > div:last-of-type');
 
 async function fetchData() {
     try {
@@ -26,8 +26,8 @@ selectElements = (data) => {
 
 window.onscroll = () => {
     if(window.scrollY < window.innerHeight) {
-        pannelHeroFirst.style.transform = `translateY(${window.scrollY * -0.5}px)`;
-        pannelHeroLast.style.transform = `translateY(${window.scrollY * 0.5}px)`;
+        panelHeroFirst.style.transform = `translateY(${window.scrollY * -0.5}px)`;
+        panelHeroLast.style.transform = `translateY(${window.scrollY * 0.5}px)`;
     }
 }
 
