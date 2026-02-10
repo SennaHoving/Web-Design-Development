@@ -43,9 +43,15 @@ window.onscroll = () => {
     }
 }
 
-//Line drawing
+//Line draw on scroll
 let line = document.querySelector('path');
 const lenght = line.getTotalLength();
-console.log(lenght);
+line.style.strokeDasharray = lenght
+line.style.strokeDashoffset = lenght
 
-//1237.5130615234375
+window.onscroll = () => {
+    const docHeight = document.body.scrollHeight - window.innerHeight;
+    const height = scrollY / docHeight;
+
+    line.style.strokeDashoffset = lenght * (1 - height); 
+}
