@@ -43,3 +43,9 @@ window.onscroll = () => {
     }
 }
 
+//Line drawing
+let line = document.querySelector('path');
+const lenght = line.getTotalLength();
+console.log(lenght);
+
+//1237.5130615234375
