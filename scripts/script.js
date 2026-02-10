@@ -1,7 +1,8 @@
 const panelHeroFirst = document.querySelector('section:nth-of-type(1) > div:first-of-type');
 const panelHeroLast = document.querySelector('section:nth-of-type(1) > div:last-of-type');
 
-async function fetchData() {
+//Fetching 
+async function fetchPersonalData() {
     try {
         const response = await fetch('https://fdnd.directus.app/items/person/332');
         const data = await response.json();
@@ -9,11 +10,21 @@ async function fetchData() {
             selectElements(data);
         }
     } catch (error) {
-        console.error(error);
+        console.log("Error:", error)
     }
 }
 
-fetchData();
+fetchPersonalData();
+
+async function fetchEverybody() {
+    try {
+        const res = await fetch('https://fdnd.directus.app/items/person/?fields=id,name,github_handle'); 
+        const data = await res.json(); 
+        console.log(data);
+    } catch (error) {
+        console.log("Error:", error)
+    }
+}
 
 selectElements = (data) => {
     Object.entries(data.data).forEach(([key, value]) => {
@@ -24,6 +35,7 @@ selectElements = (data) => {
     });   
 }
 
+// Hero scroll effect 
 window.onscroll = () => {
     if(window.scrollY < window.innerHeight) {
         panelHeroFirst.style.transform = `translateY(${window.scrollY * -0.5}px)`;
