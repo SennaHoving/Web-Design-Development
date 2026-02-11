@@ -1,5 +1,7 @@
 const container = document.querySelector('.container_scroll')
 const scroll = document.querySelector('.scroll_content') 
+const line = document.querySelector('path')
+const hybridSection = document.querySelector('body > div')
 
 //Fetching 
 async function fetchPersonalData() {
@@ -47,15 +49,30 @@ function transform(section) {
     scroll.style.transform = `translate3d(${-(sectionPercentage)}vw, 0, 0)`
 } 
 
-//Line draw on scroll
-// let line = document.querySelector('path');
-// const lenght = line.getTotalLength();
-// line.style.strokeDasharray = lenght
-// line.style.strokeDashoffset = lenght
+// Line draw on scroll
+const lenght = line.getTotalLength();
+line.style.strokeDasharray = lenght
+line.style.strokeDashoffset = lenght
 
-// window.onscroll = () => {
-//     const docHeight = document.body.scrollHeight - window.innerHeight;
-//     const height = scrollY / docHeight;
+let active
+const options = {
+    root: null,
+    threshold: 0,
+    rootMargin: `-${window.innerHeight}px 0px 0px 0px`
+}
 
-//     line.style.strokeDashoffset = lenght * (1 - height); 
-// }
+const observer = new IntersectionObserver(entries => { 
+    active = entries[0].isIntersecting
+}, options)
+
+observer.observe(hybridSection);
+
+window.onscroll = () => {
+    if (!active) return; 
+
+    const docHeight = (hybridSection.offsetHeight) - window.innerHeight;
+    const scrollProgress = window.scrollY - hybridSection.offsetTop;
+    const height = Math.min(Math.max(scrollProgress / docHeight, 0), 1);
+
+    line.style.strokeDashoffset = lenght * (1 - height); 
+}
