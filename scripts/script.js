@@ -1,5 +1,5 @@
-const panelHeroFirst = document.querySelector('section:nth-of-type(1) > div:first-of-type');
-const panelHeroLast = document.querySelector('section:nth-of-type(1) > div:last-of-type');
+const container = document.querySelector('.container_scroll')
+const scroll = document.querySelector('.scroll_content') 
 
 //Fetching 
 async function fetchPersonalData() {
@@ -10,7 +10,7 @@ async function fetchPersonalData() {
             selectElements(data);
         }
     } catch (error) {
-        console.log("Error:", error)
+        console.log('Error:', error)
     }
 }
 
@@ -22,36 +22,40 @@ async function fetchEverybody() {
         const data = await res.json(); 
         console.log(data);
     } catch (error) {
-        console.log("Error:", error)
+        console.log('Error:', error)
     }
 }
 
 selectElements = (data) => {
     Object.entries(data.data).forEach(([key, value]) => {
-        const element = document.querySelector(`[data="${key}"]`);
+        const element = document.querySelector(`[data='${key}']`);
         if (element) {
             element.textContent = value;
         }
     });   
 }
 
-// Hero scroll effect 
-window.onscroll = () => {
-    if(window.scrollY < window.innerHeight) {
-        panelHeroFirst.style.transform = `translateY(${window.scrollY * -0.5}px)`;
-        panelHeroLast.style.transform = `translateY(${window.scrollY * 0.5}px)`;
-    }
-}
+//Hybrid scroll
+window.addEventListener('scroll', () => {
+    transform(container);
+})
+
+function transform(section) {
+    const offsetTop = section.parentElement.offsetTop 
+    let sectionPercentage = (((window.scrollY - offsetTop) / window.innerHeight) * 100); 
+    sectionPercentage = sectionPercentage < 0 ? 0 : sectionPercentage > 400 ? 400 : sectionPercentage;
+    scroll.style.transform = `translate3d(${-(sectionPercentage)}vw, 0, 0)`
+} 
 
 //Line draw on scroll
-let line = document.querySelector('path');
-const lenght = line.getTotalLength();
-line.style.strokeDasharray = lenght
-line.style.strokeDashoffset = lenght
+// let line = document.querySelector('path');
+// const lenght = line.getTotalLength();
+// line.style.strokeDasharray = lenght
+// line.style.strokeDashoffset = lenght
 
-window.onscroll = () => {
-    const docHeight = document.body.scrollHeight - window.innerHeight;
-    const height = scrollY / docHeight;
+// window.onscroll = () => {
+//     const docHeight = document.body.scrollHeight - window.innerHeight;
+//     const height = scrollY / docHeight;
 
-    line.style.strokeDashoffset = lenght * (1 - height); 
-}
+//     line.style.strokeDashoffset = lenght * (1 - height); 
+// }
