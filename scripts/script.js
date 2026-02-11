@@ -2,6 +2,8 @@ const container = document.querySelector('.container_scroll')
 const scroll = document.querySelector('.scroll_content') 
 const line = document.querySelector('path')
 const hybridSection = document.querySelector('body > div')
+const themeButton = document.querySelector('#theme_switch')
+const body = document.querySelector('body') 
 
 //Fetching 
 async function fetchPersonalData() {
@@ -76,3 +78,8 @@ window.onscroll = () => {
 
     line.style.strokeDashoffset = lenght * (1 - height); 
 }
+
+//Theme switch 
+themeButton.addEventListener('click', () => {
+    body.classList.toggle("dark_theme");
+});

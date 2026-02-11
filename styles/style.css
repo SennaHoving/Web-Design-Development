@@ -65,10 +65,24 @@ h1, p {
 
 section {
 	height: 100vh; 
+	background-color: rgb(186, 186, 186);
+}
+
+#theme_switch {
+	border: none; 
+	padding: 1em; 
+	border-radius: 99em;
+	position: fixed; 
+	top: 3em; 
+	right: 3em;
+}
+
+.dark_theme {
+	--color-primary: blue;
 }
 
 body > div {
-	height: 500vh; 
+	height: 300vh; 
 }
 
 .container_scroll {
@@ -76,15 +90,20 @@ body > div {
 	position: sticky; 
 	top: 0; 
 	overflow: hidden;  
-	border: 1px red solid; 
 	width: 100%;
 }
 
 .scroll_content {	
 	position: absolute; 
 	top: 0; 
-	width: 500vw; /* met svg kan deze weg */ 
 	will-change: transform;
 	height: 100%;  
-	background: linear-gradient(90deg,rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%);
+	display: flex; 
+	align-items: center;
+	/* width: 500vw; /* met svg kan deze weg */
+	/* background: linear-gradient(90deg,rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%); */
+}
+
+path {
+	stroke: var(--color-primary);
 }
