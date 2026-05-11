@@ -1,5 +1,5 @@
 const container = document.querySelector('.container_scroll')
-const scroll = document.querySelector('.scroll_content') 
+const scroll = document.querySelector('.horizontal_scroll') 
 const line = document.querySelector('path')
 const hybridSection = document.querySelector('body > div')
 const themeButton = document.querySelector('#theme_switch')
@@ -40,7 +40,7 @@ selectElements = (data) => {
 }
 
 //Hybrid scroll
-window.addEventListener('scroll', () => {
+window.addEventListener('scroll', (e) => {
     transform(container);
 })
 
@@ -50,6 +50,8 @@ function transform(section) {
     sectionPercentage = sectionPercentage < 0 ? 0 : sectionPercentage > 400 ? 400 : sectionPercentage;
     scroll.style.transform = `translate3d(${-(sectionPercentage)}vw, 0, 0)`
 } 
+
+hybridSection
 
 // Line draw on scroll
 const lenght = line.getTotalLength();

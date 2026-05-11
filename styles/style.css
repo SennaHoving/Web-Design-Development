@@ -1,88 +1,129 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
-/* styles */
 :root{
     --color-primary: black;
+	--color-secondary: white; 
+	--color-accent: rgb(68, 68, 68); 
 
     --font-family: 'Roboto', sans-serif;
 	--font-size-title: 2em;
 }
 
-/* */ 
-h1, p {
+/* Styling */ 
+h1, p, h2 {
     color: var(--color-primary);
     font-family: var(--font-family);
 }
 
+body {
+	overflow-x: hidden; 
+	margin: 0; 
+	padding: 0; 
+}
+
 section {
 	height: 100vh; 
-	background-color: rgb(186, 186, 186);
+	background-color: rgb(255,240,219);
+}
+
+section:first-of-type {
+	display: flex; 
+	justify-content: center;
+	align-items: center; 
+}
+
+section:first-of-type h1 {
+	font-size: 3em;
+	color: #1d1d1d;
 }
 
 #theme_switch {
 	border: none; 
-	padding: 1em; 
 	border-radius: 99em;
+	padding: 0;
 	position: fixed; 
-	top: 3em; 
-	right: 3em;
+	top: 2em; 
+	right: 2em;
+	background-color: var(--color-secondary);
+	width: 5em; 
+	height: 2.5em;
+}
+
+#theme_switch span {
+	border-radius: 99em;
+	background-color: var(--color-accent); 
+	height: 2em; 
+	width: 2em; 
+	display: block; 
 }
 
 .dark_theme {
 	--color-primary: blue;
 }
 
-body > div {
-	height: 300vh; 
+/* hybrid section */ 
+.hybrid_section {
+	position: relative; 
+}
+
+.sticky_container {
+	position: sticky; 
+	height: 100vh; 
+	width: 100%; 
+	top: 0;
+	overflow: hidden; 
+}
+
+.scroll_horizontal {
+	position: absolute; 
+	will-change: transform; 
+	height: 100%; 
+	display: flex; 
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.scroll_content {
+	height: 100%; 
+	width: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.leerdoel {
+	display: flex; 
+	flex-direction: column; 
+	width: 100vw;
+	height: 100vh; 
+	justify-content: center;
+	align-items: center;
+	position: relative; 
+}
+
+
+
+.leerdoel:nth-child(3) p:last-of-type {
+	position: absolute; 
+	bottom: 1em; 
+	right: 2em; 
+}
+
+/* .scroll_content:nth-of-type(1) {
+	background-color: red;
+}
+
+.scroll_content:nth-of-type(2) {
+	background-color: blue;
+} */
+
+
+
+
+
+
+body > div:nth-of-type(2) {
+	height: 300vh;
 }
 
 .container_scroll {
@@ -93,7 +134,7 @@ body > div {
 	width: 100%;
 }
 
-.scroll_content {	
+.horizontal_scroll {	
 	position: absolute; 
 	top: 0; 
 	will-change: transform;
@@ -104,6 +145,10 @@ body > div {
 	/* background: linear-gradient(90deg,rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%); */
 }
 
+/* .scroll_content {
+	height: 100%; 
+	width: 100vw;
+} */
 path {
 	stroke: var(--color-primary);
 }
