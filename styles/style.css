@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=League+Script&display=swap');
 
 :root{
     --color-primary: black;
@@ -32,22 +33,19 @@ section:first-of-type {
 	align-items: end; 
 
 	padding: 0 2em; 
-
-	background-image: url('../assets/GreatWave.jpg');
-	background-size: cover;
-	background-position: center;
 }
 
-/* section:first-of-type:after {
-	content: ""; 
-	position: absolute;
+.back {
+	position: absolute; 
 	top: 0; 
-	left: 0;
-	width: 100%;
-	height: 100%;
+	left: 50%;
+	transform: translateX(-50%); 
+	font-size: 140vh; 
+	line-height: 140vh;
+	color: rgba(29, 29, 29, 0.1);
 
-	background-color: rgba(0, 0, 0, 0.3);
-} */
+	font-family: 'League Script', cursive;
+}
 
 section:first-of-type p {
 	font-size: 1.5em;
@@ -57,7 +55,33 @@ section:first-of-type h1 {
 	font-size: 13em;
 	margin: 0 0 0.2em 0;
 	
-	color: #ffffff;
+	color: #1d1d1d;
+}
+
+section:first-of-type ul {
+	position: absolute; 
+	top: 0; 
+	right: 1em; 
+	margin: 0; 
+	
+	animation: names 20s linear infinite;
+}
+
+section:first-of-type ul li {
+	list-style: none; 
+	padding: 0; 
+	margin: 0;
+	font-size: 1.5em;
+	text-align: right;
+}
+
+@keyframes names {
+	0% {
+		transform: translateY(0%);
+	}
+	100% {
+		transform: translateY(-54%);
+	}
 }
 
 #theme_switch {

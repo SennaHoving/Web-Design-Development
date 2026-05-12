@@ -25,3 +25,19 @@ window.addEventListener('load', ()  => {
 });
 window.addEventListener('resize', updateHeight);
 window.addEventListener('scroll', transform);
+
+//Api fetch
+async function getPeople() {
+  const response = await fetch("https://fdnd.directus.app/items/person/?sort=name");
+  const result = await response.json();
+
+  const list = document.getElementById("namen");
+
+  result.data.forEach(person => {
+    const li = document.createElement("li");
+    li.textContent = person.name;
+    list.appendChild(li);
+  });
+}
+
+getPeople();
