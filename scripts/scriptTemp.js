@@ -16,7 +16,7 @@ function transform() {
 //responsive section height 
 function updateHeight() {
     const scrollDistance = scrollHorizontal.scrollWidth - window.innerWidth;
-    hybridSection.style.height = window.innerHeight + scrollDistance * 4 + 'px'; // ← multiply scrollDistance
+    hybridSection.style.height = window.innerHeight + scrollDistance * 4 + 'px'; 
 }
 
 window.addEventListener('load', ()  => {
