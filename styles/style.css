@@ -64,6 +64,7 @@ section:first-of-type h1 {
 /* hybrid section */ 
 .hybrid_section {
 	position: relative; 
+	background-color: rgb(255,240,219);
 }
 
 .sticky_container {
@@ -91,6 +92,11 @@ section:first-of-type h1 {
 	align-items: center;
 }
 
+.scroll_content path {
+	transition: stroke-dashoffset 0.05s linear;
+}
+
+/* Leerdoelen */ 
 .leerdoel {
 	display: flex; 
 	flex-direction: column; 
